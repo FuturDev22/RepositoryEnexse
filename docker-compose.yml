@@ -1,0 +1,25 @@
+version: '3.8'
+services:
+  app:
+    image: oumaimax1999/images:imageagents
+    restart: always
+    ports:
+      - 8089:8089
+    networks:
+      - networktest
+
+  mysqldb:
+    container_name: mysqldb
+    image: mysql
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_DATABASE: test2
+      MYSQL_ROOT_PASSWORD: ''
+      MYSQL_ALLOW_EMPTY_PASSWORD: 'true'
+    networks:
+      - networktest
+
+networks:
+  networktest:
+    external: true
